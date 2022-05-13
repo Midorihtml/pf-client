@@ -45,8 +45,8 @@ const loginReducer = (state = loginState, action) => {
                     isAdmin: data.isAdmin,
                     isProvider: data.isProvider,
                     error: '',
-                    expiresAt: Date(data.exp),
-                    issuedAt: Date(data.iat),
+                    expiresAt: new Date(payload.exp).toDateString(),
+                    issuedAt: new Date(payload.iat).toDateString(),
                     permission: 'approved'
                 }
             }
@@ -129,8 +129,8 @@ const loginReducer = (state = loginState, action) => {
                     email: payload.email,
                     isAdmin: payload.isAdmin,
                     isProvider: payload.isProvider,
-                    expiresAt: Date(payload.exp),
-                    issuedAt: Date(payload.iat),
+                    expiresAt: new Date(payload.exp).toDateString(),
+                    issuedAt: new Date(payload.iat).toDateString(),
                     permission: 'approved'
                 }
             }
@@ -139,19 +139,19 @@ const loginReducer = (state = loginState, action) => {
             {
                 return {
                     ...state,
-                    loading:false,
-                    error:'',
-                    email:payload
+                    loading: false,
+                    error: '',
+                    email: payload
                 }
-            } 
+            }
         case LOGIN_ACTIONS.PASSWORD_RECOVER_FAILURE:
             {
                 return {
                     ...state,
-                    loading:false,
-                    error:payload
+                    loading: false,
+                    error: payload
                 }
-            }       
+            }
         default: return state
     }
 }
